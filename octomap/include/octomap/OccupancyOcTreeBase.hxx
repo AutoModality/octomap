@@ -303,6 +303,7 @@ namespace octomap {
     // may cause an overhead in some configuration, but more often helps
     NODE* leaf = this->search(key);
     // no change: node already at threshold
+    //TODO ED elimiante
     if (leaf
         && ((log_odds_update >= 0 && leaf->getLogOdds() >= this->clamping_thres_max)
         || ( log_odds_update <= 0 && leaf->getLogOdds() <= this->clamping_thres_min)))
@@ -405,6 +406,7 @@ namespace octomap {
     }
 
     // at last level, update node, end of recursion
+    //TODO ED REPLACE THIS. be careful for the comparisions that use the probablity that is stored in the leaf. Might break other stuff
     else {
       if (use_change_detection) {
         bool occBefore = this->isNodeOccupied(node);
